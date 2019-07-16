@@ -352,7 +352,8 @@ Otherwise open the file and do the changes non-interactively."
   (read-kbd-macro (concat prefix " " keys)))
 
 (defvar cljr--all-helpers
-  '(("ai" . (cljr-add-import-to-ns "Add import to ns" ?i ("ns")))
+  '(("aa" . (clojure-add-arity "Add function arity" ?a ("code")))
+    ("ai" . (cljr-add-import-to-ns "Add import to ns" ?i ("ns")))
     ("am" . (cljr-add-missing-libspec "Add missing libspec" ?m ("ns")))
     ("ap" . (cljr-add-project-dependency "Add project dependency" ?p ("ns" "project")))
     ("ar" . (cljr-add-require-to-ns "Add require to ns" ?r ("ns")))
@@ -380,6 +381,7 @@ Otherwise open the file and do the changes non-interactively."
     ("rf" . (cljr-rename-file-or-dir "Rename file-or-dir" ?r ("project" "toplevel-form")))
     ("rl" . (cljr-remove-let "Remove let" ?r ("code")))
     ("rm" . (cljr-require-macro "Add to or extend the require-macros form" ?M ("ns")))
+    ("rm" . (clojure-rename-ns-alias "Rename ns alias" ?n ("ns")))
     ("rs" . (cljr-rename-symbol "Rename symbol" ?s ("project" "code")))
     ("sc" . (cljr-show-changelog "Show the project's changelog" ?c ("cljr")))
     ("sp" . (cljr-sort-project-dependencies "Sort project dependencies" ?S ("project")))
@@ -406,13 +408,13 @@ Otherwise open the file and do the changes non-interactively."
 ------------------------------------------------------------------------------------------------------------------------------------------------------
 _ai_: Add import to ns                             _am_: Add missing libspec                          _ap_: Add project dependency
 _ar_: Add require to ns                            _au_: Add use to ns                                _cn_: Clean ns
-_rm_: Require a macro into the ns                  _sr_: Stop referring
+_rn_: Rename ns alias                              _rm_: Require a macro into the ns                  _sr_: Stop referring
 _b_: Back to previous Hydra
 "
   ("ai" cljr-add-import-to-ns) ("am" cljr-add-missing-libspec)
   ("ap" cljr-add-project-dependency) ("ar" cljr-add-require-to-ns)
   ("au" cljr-add-use-to-ns) ("cn" cljr-clean-ns)
-  ("rm" cljr-require-macro) ("sr" cljr-stop-referring)
+  ("rn" clojure-rename-ns-alias) ("rm" cljr-require-macro) ("sr" cljr-stop-referring)
   ("b" hydra-cljr-help-menu/body :exit t)
   ("q" nil "quit"))
 
@@ -420,7 +422,7 @@ _b_: Back to previous Hydra
   "
  Code related refactorings
 ------------------------------------------------------------------------------------------------------------------------------------------------------
-_ci_: Cycle if                                     _ct_: Cycle thread
+_aa_: Add function arity                           _ci_: Cycle if                                     _ct_: Cycle thread
 _dk_: Destructure keys                             _el_: Expand let                                   _fu_: Find usages
 _il_: Introduce let                                _is_: Inline symbol                                _ml_: Move to let
 _pf_: Promote function                             _rl_: Remove let                                   _rs_: Rename symbol
@@ -428,7 +430,7 @@ _tf_: Thread first all                             _th_: Thread                 
 _ua_: Unwind all                                   _uw_: Unwind
 _b_: Back to previous Hydra
 "
-  ("ci" clojure-cycle-if) ("ct" cljr-cycle-thread)
+  ("aa" clojure-add-arity) ("ci" clojure-cycle-if) ("ct" cljr-cycle-thread)
   ("dk" cljr-destructure-keys) ("el" cljr-expand-let)
   ("fu" cljr-find-usages) ("il" cljr-introduce-let)
   ("is" cljr-inline-symbol) ("ml" cljr-move-to-let)

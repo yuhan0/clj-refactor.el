@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- New bindings `aa`,`rn` for clojure-mode refactorings `clojure-add-arity` and `clojure-rename-ns-alias` .
 - [#402](https://github.com/clojure-emacs/clj-refactor.el/issues/402) cljr-stop-referring: do not alter strings.
 - [#380](https://github.com/clojure-emacs/clj-refactor.el/issues/380) clean-ns: fix FileNotFoundException, by trying both the absolute path and the path relative to the project root. This requires a new refactor-nrepl, old versions will only check the absolute path.
 
